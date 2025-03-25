@@ -3,23 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface ILoader<Key, Value>
+public abstract class DataManagerBase
 {
-    Dictionary<Key, Value> MakeDict();
-}
-
-public class DataManagerBase
-{
-    //public Dictionary<int, Data.MonsterData> MonsterDic { get; private set; } = new Dictionary<int, Data.MonsterData>();
-
-    public void Init()
+    protected Dictionary<int, IDataTable> _dataTables = new Dictionary<int, IDataTable>();
+    
+    public virtual void Init()
     {
-        //MonsterDic = LoadJson<Data.MonsterDataLoader, int, Data.MonsterData>("MonsterData").MakeDict();
+        
     }
 
-    private Loader LoadJson<Loader, Key, Value>(string path) where Loader : ILoader<Key, Value>
+    protected T GetDataTable<T>(int key) where T : class, IDataTable
     {
-        TextAsset textAsset = Managers.Resource.Load<TextAsset>(path);
-        return JsonConvert.DeserializeObject<Loader>(textAsset.text);
+        if (_dataTables.TryGetValue(key, out IDataTable dataTable) == false)
+        {
+            // 에러 처리
+        }
+
+        return dataTable as T;
     }
 }

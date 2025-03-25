@@ -17,7 +17,7 @@ public class Managers : MonoBehaviour
     #endregion
 
     #region Core
-    private DataManagerBase _data = new DataManagerBase();
+    private DataManagerBase _data = new DataManager();
 
     internal static void Clear()
     {
