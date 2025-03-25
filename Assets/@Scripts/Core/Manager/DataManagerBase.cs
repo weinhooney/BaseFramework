@@ -5,13 +5,18 @@ using UnityEngine;
 
 public abstract class DataManagerBase
 {
-    protected Dictionary<int, IDataTable> _dataTables = new Dictionary<int, IDataTable>();
+    private Dictionary<int, IDataTable> _dataTables = new Dictionary<int, IDataTable>();
     
     public virtual void Init()
     {
         
     }
 
+    protected void AddDataTable(int key, IDataTable dataTable)
+    {
+        _dataTables.Add(key, dataTable);
+    }
+    
     protected T GetDataTable<T>(int key) where T : class, IDataTable
     {
         if (_dataTables.TryGetValue(key, out IDataTable dataTable) == false)
