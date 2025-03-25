@@ -8,7 +8,7 @@ public interface ILoader<Key, Value>
     Dictionary<Key, Value> MakeDict();
 }
 
-public class DataManager
+public class DataManagerBase
 {
     //public Dictionary<int, Data.MonsterData> MonsterDic { get; private set; } = new Dictionary<int, Data.MonsterData>();
 

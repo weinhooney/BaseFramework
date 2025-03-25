@@ -10,7 +10,7 @@ public class GameScene : BaseScene
         if (false == base.Init()) { return false; }
 
         SceneType = Define.EScene.GameScene;
-
+        
         return true;
     }
 
